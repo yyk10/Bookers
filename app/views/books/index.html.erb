@@ -1,0 +1,38 @@
+
+<h1>Books</h1>
+
+<table>
+ <thead>
+   <tr>
+     <th>Title</th>
+     <th>Body</th>
+     <td colspan="3"></td>
+   </tr>
+ </thead>
+
+ <tbody>
+ <% @books.each do |book| %>
+    <tr>
+     <td><%= book.title %></td>
+     <td><span><%= book.body %></span></td>
+     <td><a href ="/books">Show</a></td>
+     <td><a href ="/books">Edit</a></td>
+     <td><a href ="/books">Destroy</a></td>
+   </tr>
+   <% end %>
+ </tbody>
+</table>
+
+<h2>New book</h2>
+<%= form_with model: @book do |f| %>
+
+<p>Title</p>
+<%= f.text_field :title %>
+
+<p>Body</p>
+<%= f.text_area :body %>
+
+<div><%= f.submit 'Create Book' %></div>
+
+<% end %>
+
