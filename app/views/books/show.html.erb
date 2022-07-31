@@ -1,4 +1,4 @@
-
+<div class= "show-page">
 <p><strong>Title:</strong>
 
 <% if flash[:notice] %>
@@ -10,7 +10,9 @@
    
 <p><strong>Body:</strong>
    <%= @book.body %></p>
-   
+</div>
+<heder>
  <%= link_to "Edit", edit_book_path(@book.id) %>
- /
+ |
  <%= link_to "Back", books_path %>
+</heder>
