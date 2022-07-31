@@ -13,17 +13,28 @@
  <tbody>
  <% @books.each do |book| %>
     <tr>
-     <td><%= book.title %></td>
-     <td><span><%= book.body %></span></td>
-     <td><a href ="/books">Show</a></td>
-     <td><a href ="/books">Edit</a></td>
-     <td><a href ="/books">Destroy</a></td>
+     <td><%= book.title %> </td>
+     <td><%= book.body %></td>
+     <td> <%= link_to "Show", book_path(book) %></td>
+     <td> <%= link_to "Edit", edit_book_path(book) %></td>
+     <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure？" %></td>
    </tr>
    <% end %>
  </tbody>
 </table>
 
 <h2>New book</h2>
+<% if @book.errors.any? %>
+ <%= @book.erroes.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
 <%= form_with model: @book do |f| %>
 
 <p>Title</p>
